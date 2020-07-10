@@ -1,15 +1,19 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
+import { QuestionsModule } from './questions/questions.module';
 
-Module({
+require('dotenv').config()
+const dbConnectionString = process.env.DB_CONNECTION_STRING
+
+@Module({
   imports: [
+    QuestionsModule,
     GraphQLModule.forRoot({
       autoSchemaFile: "schema.gql",
     }),
-    MongooseModule.forRoot(process.env.CONNECTION_STRING)
+
+    MongooseModule.forRoot(dbConnectionString)
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule { }
