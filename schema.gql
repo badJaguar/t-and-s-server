@@ -2,11 +2,27 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type AnswerDto {
+  questionId: String!
+  answer: String!
+  isSelected: Boolean!
+}
+
 type CreateQuestionDto {
-  id: ID!
+  _id: ID!
   text: String!
+  answers: [AnswerDto!]!
 }
 
 type Query {
   questions: [CreateQuestionDto!]!
+}
+
+type Mutation {
+  createQuestion(answers: [CreateAnswerInput!], text: String!): CreateQuestionDto!
+}
+
+input CreateAnswerInput {
+  answer: String!
+  isSelected: Boolean!
 }
