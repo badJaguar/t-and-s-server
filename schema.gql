@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type AnswerDto {
-  questionId: String!
+  id: String!
   answer: String!
   isSelected: Boolean!
 }

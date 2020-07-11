@@ -1,12 +1,12 @@
 
 export interface Question {
-    id?: string;
-    text: string;
-    answers: Answer[];
+  id?: string;
+  text: string;
+  answers: Answer[];
 }
 
 export interface Answer {
-    questionId: string;
-    answer: string;
-    isSelected: boolean;
+  id: string
+  answer: string;
+  isSelected: boolean;
 }
