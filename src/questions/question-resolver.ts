@@ -1,6 +1,5 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import mongoose from "mongoose";
-import { v4 as uuid } from 'uuid';
 import { CreateAnswerInput } from "./inputs/update-anwer";
 import { Answer } from "./interfaces/question.interface";
 import { CreateQuestionDto } from "./object-types/question-type.dto";
@@ -23,8 +22,6 @@ export class QuestionResolver {
     @Args({ name: "answers", type: () => [CreateAnswerInput], nullable: true }) answers: Answer[],
   ): Promise<Question> {
 
-    const answerId: string = uuid();
-
     const result = this.questionService.createQuestion({
       text, answers: answers.map(x => {
         return {
@@ -33,7 +30,7 @@ export class QuestionResolver {
         }
       })
     });
-    console.log(result)
+
     return result;
   }
 }
