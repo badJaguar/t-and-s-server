@@ -1,11 +1,11 @@
 
-export interface Question {
+export interface IQuestion {
   id?: string;
   text: string;
-  answers: Answer[];
+  answers: IAnswer[];
 }
 
-export interface Answer {
+export interface IAnswer {
   id: string
   answer: string;
   isSelected: boolean;

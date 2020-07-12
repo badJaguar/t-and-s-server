@@ -1,6 +1,6 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import mongoose from "mongoose";
-import { UpdateQuestionInput } from "./inputs/create-answer-input";
+import { UpdateAnswerInput } from "./inputs/create-answer-input";
 import { CreateQuestionInput } from "./inputs/create-question-input";
 import { QuestionType } from "./object-types/question-type.dto";
 import { QuestionService } from "./question-service";
@@ -43,8 +43,8 @@ export class QuestionResolver {
 
   @Mutation(() => QuestionType)
   async updateQuestion(
-    @Args('id') id: string,
-    @Args('input') input: UpdateQuestionInput): Promise<Question> {
+    @Args('_id') id: string,
+    @Args('input') input: UpdateAnswerInput): Promise<Question> {
     const result = this.questionService.updateQuestion(id, input);
 
     return result;

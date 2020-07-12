@@ -10,12 +10,12 @@ export class CreateAnswerInput {
 }
 
 @InputType()
-export class UpdateQuestionInput {
+export class UpdateAnswerInput {
   @Field(() => ID)
   id: string
 
   @Field(() => String)
-  answer: string;
+  answer?: string;
 
   @Field(() => Boolean)
   isSelected: boolean

@@ -21,7 +21,7 @@ type Query {
 
 type Mutation {
   createQuestion(input: CreateQuestionInput!): QuestionType!
-  updateQuestion(input: UpdateQuestionInput!, id: String!): QuestionType!
+  updateQuestion(input: UpdateAnswerInput!, _id: String!): QuestionType!
 }
 
 input CreateQuestionInput {
@@ -34,7 +34,7 @@ input CreateAnswerInput {
   isSelected: Boolean!
 }
 
-input UpdateQuestionInput {
+input UpdateAnswerInput {
   id: ID!
   answer: String!
   isSelected: Boolean!

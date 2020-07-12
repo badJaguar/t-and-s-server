@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UpdateQuestionInput } from './inputs/create-answer-input';
+import { UpdateAnswerInput } from './inputs/create-answer-input';
 import { CreateQuestionInput } from './inputs/create-question-input';
 import { Question } from './question.schema';
 
@@ -24,7 +24,7 @@ export class QuestionService {
     return createQuestion.save();
   }
 
-  async updateQuestion(id: string, item: UpdateQuestionInput): Promise<Question> {
+  async updateQuestion(id: string, item: UpdateAnswerInput): Promise<Question> {
     const updateQuestion = await this.itemModel.findByIdAndUpdate(id, item, { new: true });
     return updateQuestion;
   }
