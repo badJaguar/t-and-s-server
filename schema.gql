@@ -2,7 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type AnswerDto {
+type CreateAnswerDto {
   id: String!
   answer: String!
   isSelected: Boolean!
@@ -11,7 +11,7 @@ type AnswerDto {
 type CreateQuestionDto {
   _id: ID!
   text: String!
-  answers: [AnswerDto!]!
+  answers: [CreateAnswerDto!]!
 }
 
 type Query {
@@ -20,8 +20,13 @@ type Query {
 }
 
 type Mutation {
-  createQuestion(answers: [CreateAnswerInput!], text: String!): CreateQuestionDto!
-  updateQuestion(answer: UpdateQuestionInput!, isSelected: Boolean!, id: ID!): CreateQuestionDto!
+  createQuestion(input: CreateQuestionInput!): CreateQuestionDto!
+  updateQuestion(input: UpdateQuestionInput!, id: String!): CreateQuestionDto!
+}
+
+input CreateQuestionInput {
+  text: String!
+  answers: [CreateAnswerInput!]
 }
 
 input CreateAnswerInput {
@@ -31,4 +36,6 @@ input CreateAnswerInput {
 
 input UpdateQuestionInput {
   id: ID!
+  answer: String!
+  isSelected: Boolean!
 }
