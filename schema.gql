@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type AnswerType {
-  id: String!
+  id: ID!
   answer: String!
   isSelected: Boolean!
 }
@@ -36,6 +36,6 @@ input CreateAnswerInput {
 
 input UpdateAnswerInput {
   id: ID!
-  answer: String!
+  answer: String
   isSelected: Boolean!
 }

@@ -14,8 +14,8 @@ export class UpdateAnswerInput {
   @Field(() => ID)
   id: string
 
-  @Field(() => String)
-  answer?: string;
+  @Field(() => String, { nullable: true })
+  answer: string;
 
   @Field(() => Boolean)
   isSelected: boolean

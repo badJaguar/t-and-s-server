@@ -25,7 +25,17 @@ export class QuestionService {
   }
 
   async updateQuestion(id: string, item: UpdateAnswerInput): Promise<Question> {
-    const updateQuestion = await this.itemModel.findByIdAndUpdate(id, item, { new: true });
-    return updateQuestion;
+
+    const doc = await this.itemModel.findById(id);
+
+    doc.answers.filter(x => x?.id?.toString() === item.id).map(x => {
+
+      return {
+        ...x,
+        isSelected: x.isSelected = item.isSelected
+      }
+    })
+
+    return doc.save();
   }
 }
