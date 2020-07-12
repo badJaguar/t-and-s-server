@@ -16,13 +16,19 @@ type CreateQuestionDto {
 
 type Query {
   questions: [CreateQuestionDto!]!
+  question(_id: String!): CreateQuestionDto!
 }
 
 type Mutation {
   createQuestion(answers: [CreateAnswerInput!], text: String!): CreateQuestionDto!
+  updateQuestion(answer: UpdateQuestionInput!, isSelected: Boolean!, id: ID!): CreateQuestionDto!
 }
 
 input CreateAnswerInput {
   answer: String!
   isSelected: Boolean!
+}
+
+input UpdateQuestionInput {
+  id: ID!
 }
