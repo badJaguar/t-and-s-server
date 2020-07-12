@@ -1,30 +1,30 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import mongoose from "mongoose";
-import { UpdateQuestionInput } from "./inputs/create-anwer-input";
+import { UpdateQuestionInput } from "./inputs/create-answer-input";
 import { CreateQuestionInput } from "./inputs/create-question-input";
-import { CreateQuestionDto } from "./object-types/create-question-type.dto";
+import { QuestionType } from "./object-types/question-type.dto";
 import { QuestionService } from "./question-service";
 import { Question } from "./question.schema";
 
-@Resolver(() => CreateQuestionDto)
+@Resolver(() => QuestionType)
 export class QuestionResolver {
   constructor(private questionService: QuestionService) { }
 
-  @Query(() => [CreateQuestionDto])
-  async questions(): Promise<CreateQuestionDto[]> {
+  @Query(() => [QuestionType])
+  async questions(): Promise<QuestionType[]> {
     const result = this.questionService.questions();
     return result;
   }
 
-  @Query(() => CreateQuestionDto)
+  @Query(() => QuestionType)
   async question(
     @Args({ name: "_id", type: () => String }) id: string)
-    : Promise<CreateQuestionDto> {
+    : Promise<QuestionType> {
     const result = this.questionService.question(id);
     return result;
   }
 
-  @Mutation(() => CreateQuestionDto)
+  @Mutation(() => QuestionType)
   async createQuestion(
     @Args("input") input: CreateQuestionInput): Promise<Question> {
 
@@ -41,7 +41,7 @@ export class QuestionResolver {
     return result;
   }
 
-  @Mutation(() => CreateQuestionDto)
+  @Mutation(() => QuestionType)
   async updateQuestion(
     @Args('id') id: string,
     @Args('input') input: UpdateQuestionInput): Promise<Question> {

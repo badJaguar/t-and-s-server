@@ -1,5 +1,5 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { CreateAnswerInput } from "./create-anwer-input";
+import { CreateAnswerInput } from "./create-answer-input";
 
 @InputType()
 export class CreateQuestionInput {

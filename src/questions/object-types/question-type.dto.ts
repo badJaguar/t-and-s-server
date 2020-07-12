@@ -1,14 +1,14 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
-import { CreateAnswerDto } from "./answer-type.dto";
+import { AnswerType } from "./answer-type.dto";
 
 @ObjectType()
-export class CreateQuestionDto {
+export class QuestionType {
   @Field(() => ID)
   _id?: string;
 
   @Field(() => String)
   text: string;
 
-  @Field(() => [CreateAnswerDto])
-  answers: CreateAnswerDto[];
+  @Field(() => [AnswerType])
+  answers: AnswerType[];
 }
